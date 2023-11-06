@@ -1,4 +1,4 @@
-import { AREA, COMPETITION, MATCH, TEAM } from "./constant.js";
+import { AREA, COMPETITION, MATCH, PERSON, TEAM } from "./constant.js";
 import { buildFilterQuery, removeDuplicates } from "./utils.js";
 
 /**
@@ -142,6 +142,7 @@ export const team = (id, filters = {}) => {
  * match as subresources of team
  * @param {number} id
  * @param {*} filters
+ * @returns {string}
  */
 export const matchesOfTeam = (id, filters = {}) => {
   const query = buildFilterQuery(filters, [
@@ -153,4 +154,42 @@ export const matchesOfTeam = (id, filters = {}) => {
     "limit",
   ]);
   return `${TEAM}/${id}/matches${query}`;
+};
+
+/**
+ * person info
+ * @param {number} id
+ * @param {{lineup: string, e: string, dateFrom: string, dateTo: string, competition:Array<string>, limit: number, offset: number}} filters
+ * @returns {string}
+ */
+export const person = (id, filters = {}) => {
+  const query = buildFilterQuery(filters, [
+    "lineup",
+    "e",
+    "dateFrom",
+    "dateTo",
+    "competitions",
+    "limit",
+    "offset",
+  ]);
+  return `${PERSON}/${id}${query}`;
+};
+
+/**
+ * matches as subresource of person
+ * @param {number} id
+ * @param {{lineup: string, e: string, dateFrom: string, dateTo: string, competition:Array<string>, limit: number, offset: number}} filters
+ * @returns {string}
+ */
+export const matchesOfPerson = (id, filters = {}) => {
+  const query = buildFilterQuery(filters, [
+    "lineup",
+    "e",
+    "dateFrom",
+    "dateTo",
+    "competitions",
+    "limit",
+    "offset",
+  ]);
+  return `${PERSON}/${id}/matches${query}`;
 };
