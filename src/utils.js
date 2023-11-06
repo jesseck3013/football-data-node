@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API_BASE_URL } from "./constant.js";
-import { key } from "../test/env.js";
 
 /**
  * create a axios instance with http header "X-Auth-Token" setting to token
