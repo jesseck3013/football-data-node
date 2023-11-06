@@ -1,5 +1,5 @@
-import { AREA, COMPETITION } from "./constant.js";
-import { buildFilterQuery } from "./utils.js";
+import { AREA, COMPETITION, MATCH } from "./constant.js";
+import { buildFilterQuery, removeDuplicates } from "./utils.js";
 
 /**
  * endpoint for listing all available area id
@@ -89,4 +89,23 @@ export const teamsOfCompetition = (idOrCode = "PL", filters = {}) => {
     "season",
   ]);
   return `${COMPETITION}/${idOrCode}/teams${query}`;
+};
+
+/**
+ * @param {number | string} id
+ * @param {{ids: Array<number>}} filters
+ */
+export const matches = (id = "", filters = { ids: [] }) => {
+  if (id && !isNaN(+id)) {
+    filters.ids = removeDuplicates([+id, ...filters.ids]);
+  }
+
+  const query = buildFilterQuery(filters, [
+    "ids",
+    "date",
+    "dateFrom",
+    "dateTo",
+    "status",
+  ]);
+  return `${MATCH}${query}`;
 };

@@ -1,15 +1,16 @@
-import assert from "assert";
+import assert, { match } from "assert";
 import {
   areas,
   areasById,
   competition,
   competitions,
+  matches,
   matchesOfCompetition,
   scorersOfCompetition,
   standingsOfCompetition,
   teamsOfCompetition,
 } from "../src/rest.js";
-import { AREA, COMPETITION } from "../src/constant.js";
+import { AREA, COMPETITION, MATCH } from "../src/constant.js";
 
 it("comfirm areas enpoint", () => {
   assert.deepStrictEqual(areas(), AREA);
@@ -57,4 +58,9 @@ it("matches of competitions", () => {
 
 it("teams of competitions", () => {
   assert.deepStrictEqual(teamsOfCompetition("PL"), `${COMPETITION}/PL/teams`);
+});
+
+it("matches", () => {
+  assert.deepStrictEqual(matches(10), `${MATCH}?ids=10`);
+  assert.deepStrictEqual(matches(10, { ids: [10, 11] }), `${MATCH}?ids=10,11`);
 });
