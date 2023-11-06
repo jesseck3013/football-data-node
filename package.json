@@ -7,7 +7,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [],
+  "keywords": ["football", "football-data.org"],
   "author": "jesseck3013",
   "license": "MIT",
   "dependencies": {
