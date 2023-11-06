@@ -141,7 +141,7 @@ export const team = (id, filters = {}) => {
 /**
  * match as subresources of team
  * @param {number} id
- * @param {*} filters
+ * @param {{dateFrom: string, dateTo: string, season: number, status: string, venue: string, limit: number}} filters
  * @returns {string}
  */
 export const matchesOfTeam = (id, filters = {}) => {
