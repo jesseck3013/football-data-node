@@ -4,10 +4,10 @@ import {
   areasById,
   competition,
   competitions,
-  matches,
-  scorers,
-  standings,
-  teams,
+  matchesOfCompetition,
+  scorersOfCompetition,
+  standingsOfCompetition,
+  teamsOfCompetition,
 } from "../src/rest.js";
 import { AREA, COMPETITION } from "../src/constant.js";
 
@@ -35,17 +35,26 @@ it("competition by code", () => {
 });
 
 it("standings", () => {
-  assert.deepStrictEqual(standings("PL"), `${COMPETITION}/PL/standings`);
+  assert.deepStrictEqual(
+    standingsOfCompetition("PL"),
+    `${COMPETITION}/PL/standings`,
+  );
 });
 
 it("top scorers", () => {
-  assert.deepStrictEqual(scorers("PL"), `${COMPETITION}/PL/scorers`);
+  assert.deepStrictEqual(
+    scorersOfCompetition("PL"),
+    `${COMPETITION}/PL/scorers`,
+  );
 });
 
 it("matches", () => {
-  assert.deepStrictEqual(matches("PL"), `${COMPETITION}/PL/matches`);
+  assert.deepStrictEqual(
+    matchesOfCompetition("PL"),
+    `${COMPETITION}/PL/matches`,
+  );
 });
 
 it("teams", () => {
-  assert.deepStrictEqual(teams("PL"), `${COMPETITION}/PL/teams`);
+  assert.deepStrictEqual(teamsOfCompetition("PL"), `${COMPETITION}/PL/teams`);
 });

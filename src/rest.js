@@ -45,7 +45,7 @@ export const competition = (idOrCode = "PL", filters = {}) => {
  * @param {{season: number, matchday: number, date: string}} filters
  * @returns
  */
-export const standings = (idOrCode = "PL", filters = {}) => {
+export const standingsOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, ["season", "matchday", "date"]);
   return `${COMPETITION}/${idOrCode}/standings${query}`;
 };
@@ -55,7 +55,7 @@ export const standings = (idOrCode = "PL", filters = {}) => {
  * @param {number | string} idOrCode
  * @param {{season: number, matchday: number}} filters
  */
-export const scorers = (idOrCode = "PL", filters = {}) => {
+export const scorersOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, ["season", "matchday"]);
   return `${COMPETITION}/${idOrCode}/scorers${query}`;
 };
@@ -65,7 +65,7 @@ export const scorers = (idOrCode = "PL", filters = {}) => {
  * @param {{season: number, matchday: number | string, status: string, dateFrom: string, dateTo: string, stage: string, group: string}} filters
  * @returns
  */
-export const matches = (idOrCode = "PL", filters = {}) => {
+export const matchesOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, [
     "season",
     "matchday",
@@ -84,7 +84,7 @@ export const matches = (idOrCode = "PL", filters = {}) => {
  * @param {{season: number}} filters
  * @returns
  */
-export const teams = (idOrCode = "PL", filters = {}) => {
+export const teamsOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, [
     "season",
   ]);
