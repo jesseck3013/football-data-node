@@ -6,11 +6,14 @@ import {
   competitions,
   matches,
   matchesOfCompetition,
+  matchesOfTeam,
   scorersOfCompetition,
   standingsOfCompetition,
+  team,
+  teams,
   teamsOfCompetition,
 } from "../src/rest.js";
-import { AREA, COMPETITION, MATCH } from "../src/constant.js";
+import { AREA, COMPETITION, MATCH, TEAM } from "../src/constant.js";
 
 it("comfirm areas enpoint", () => {
   assert.deepStrictEqual(areas(), AREA);
@@ -63,4 +66,16 @@ it("teams of competitions", () => {
 it("matches", () => {
   assert.deepStrictEqual(matches(10), `${MATCH}?ids=10`);
   assert.deepStrictEqual(matches(10, { ids: [10, 11] }), `${MATCH}?ids=10,11`);
+});
+
+it("list all team", () => {
+  assert.deepStrictEqual(teams(), `${TEAM}`);
+});
+
+it("team info", () => {
+  assert.deepStrictEqual(team(11), `${TEAM}/11`);
+});
+
+it("match as subresources of team", () => {
+  assert.deepStrictEqual(matchesOfTeam(11), `${TEAM}/11/matches`);
 });

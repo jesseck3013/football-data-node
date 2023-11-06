@@ -1,4 +1,4 @@
-import { AREA, COMPETITION, MATCH } from "./constant.js";
+import { AREA, COMPETITION, MATCH, TEAM } from "./constant.js";
 import { buildFilterQuery, removeDuplicates } from "./utils.js";
 
 /**
@@ -43,7 +43,7 @@ export const competition = (idOrCode = "PL", filters = {}) => {
  * standings
  * @param {number | string} idOrCode
  * @param {{season: number, matchday: number, date: string}} filters
- * @returns
+ * @returns {string}
  */
 export const standingsOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, ["season", "matchday", "date"]);
@@ -54,6 +54,7 @@ export const standingsOfCompetition = (idOrCode = "PL", filters = {}) => {
  * top scorers
  * @param {number | string} idOrCode
  * @param {{season: number, matchday: number}} filters
+ * @returns {string}
  */
 export const scorersOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, ["season", "matchday"]);
@@ -63,7 +64,7 @@ export const scorersOfCompetition = (idOrCode = "PL", filters = {}) => {
 /**
  * @param {number | string} idOrCode
  * @param {{season: number, matchday: number | string, status: string, dateFrom: string, dateTo: string, stage: string, group: string}} filters
- * @returns
+ * @returns {string}
  */
 export const matchesOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, [
@@ -82,7 +83,7 @@ export const matchesOfCompetition = (idOrCode = "PL", filters = {}) => {
  * teams info of its competition
  * @param {number | string} idOrCode
  * @param {{season: number}} filters
- * @returns
+ * @returns {string}
  */
 export const teamsOfCompetition = (idOrCode = "PL", filters = {}) => {
   const query = buildFilterQuery(filters, [
@@ -93,7 +94,8 @@ export const teamsOfCompetition = (idOrCode = "PL", filters = {}) => {
 
 /**
  * @param {number | string} id
- * @param {{ids: Array<number>}} filters
+ * @param {{ids: Array<number>, date: string, dateFrom: string, dateTo: string, status: string}} filters
+ * @returns {string}
  */
 export const matches = (id = "", filters = { ids: [] }) => {
   if (id && !isNaN(+id)) {
@@ -108,4 +110,47 @@ export const matches = (id = "", filters = { ids: [] }) => {
     "status",
   ]);
   return `${MATCH}${query}`;
+};
+
+/**
+ * list all teams
+ * @returns {string}
+ */
+export const teams = () => {
+  return `${TEAM}`;
+};
+
+/**
+ * team info
+ * @param {number} id
+ * @param {{dateFrom: string, dateTo: string, season: number, status: string, venue: string, limit: number}} filters
+ * @returns {string}
+ */
+export const team = (id, filters = {}) => {
+  const query = buildFilterQuery(filters, [
+    "dateFrom",
+    "dateTo",
+    "season",
+    "status",
+    "venue",
+    "limit",
+  ]);
+  return `${TEAM}/${id}${query}`;
+};
+
+/**
+ * match as subresources of team
+ * @param {number} id
+ * @param {*} filters
+ */
+export const matchesOfTeam = (id, filters = {}) => {
+  const query = buildFilterQuery(filters, [
+    "dateFrom",
+    "dateTo",
+    "season",
+    "status",
+    "venue",
+    "limit",
+  ]);
+  return `${TEAM}/${id}/matches${query}`;
 };
