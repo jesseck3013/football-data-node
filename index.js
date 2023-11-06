@@ -1,3 +1,4 @@
+export { leagues } from "./src/constant.js";
 import {
   areas,
   areasById,
