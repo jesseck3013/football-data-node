@@ -34,27 +34,27 @@ it("competition by code", () => {
   assert.deepStrictEqual(competition("PL"), `${COMPETITION}/PL`);
 });
 
-it("standings", () => {
+it("standings of competitions", () => {
   assert.deepStrictEqual(
     standingsOfCompetition("PL"),
     `${COMPETITION}/PL/standings`,
   );
 });
 
-it("top scorers", () => {
+it("top scorers of competitions", () => {
   assert.deepStrictEqual(
     scorersOfCompetition("PL"),
     `${COMPETITION}/PL/scorers`,
   );
 });
 
-it("matches", () => {
+it("matches of competitions", () => {
   assert.deepStrictEqual(
     matchesOfCompetition("PL"),
     `${COMPETITION}/PL/matches`,
   );
 });
 
-it("teams", () => {
+it("teams of competitions", () => {
   assert.deepStrictEqual(teamsOfCompetition("PL"), `${COMPETITION}/PL/teams`);
 });
