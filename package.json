@@ -1,13 +1,16 @@
 {
   "name": "football-data-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node.js client to football-data.org",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "keywords": ["football", "football-data.org"],
+  "keywords": [
+    "football",
+    "football-data.org"
+  ],
   "author": "jesseck3013",
   "license": "MIT",
   "dependencies": {
