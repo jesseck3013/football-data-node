@@ -74,7 +74,7 @@ export default class Client {
    * @returns {import("axios").AxiosResponse}
    */
   standingsOfCompetition(idOrCode = "PL", filters = {}) {
-    return this.#sendReq(standingsOfCompetition(idOrCode), filters);
+    return this.#sendReq(standingsOfCompetition(idOrCode, filters));
   }
 
   /**
