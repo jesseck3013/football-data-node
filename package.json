@@ -1,6 +1,6 @@
 {
   "name": "football-data-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A node.js client to football-data.org",
   "type": "module",
   "main": "index.js",
