@@ -65,3 +65,13 @@ export const buildQuery = (params = []) => {
 
   return query;
 };
+
+/**
+ * given an array, remove duplicate items
+ * @param {Array<any>} arr
+ * @returns {Array<any>}
+ */
+export const removeDuplicates = (array) => {
+  const s = new Set(array);
+  return Array.from(s);
+};

@@ -1,5 +1,9 @@
 import assert from "assert";
-import { buildFilterQuery, buildQuery } from "../src/utils.js";
+import {
+  buildFilterQuery,
+  buildQuery,
+  removeDuplicates,
+} from "../src/utils.js";
 
 it("build url query", () => {
   const params = [
@@ -35,4 +39,11 @@ it("build url query from user defined filters and available filters ", () => {
     buildFilterQuery(filter, available3),
     "",
   );
+});
+
+it("remove duplivate items from an array", () => {
+  let given = [1, 2, 3, 3, 3];
+  assert.deepStrictEqual(removeDuplicates(given), [1, 2, 3]);
+  given = [1, 2, 3];
+  assert.deepStrictEqual(removeDuplicates(given), [1, 2, 3]);
 });
